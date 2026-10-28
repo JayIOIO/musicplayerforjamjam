@@ -6,6 +6,7 @@ const SONGS = [
   "Harry Styles - Coming Up Roses (Official Lyric Video).mp3",
   "Bruno Mars - Risk It All Official Music Video.mp3",
   "o ninanais - Arthur Nery (Official Lyric Visualizer).mp3",
-  "Tatin DC - Malumanay (Official Lyric Video).mp3"
+  "Tatin DC - Malumanay (Official Lyric Video).mp3",
+  "IV OF SPADES - Isang Pag-Ibig (Official Video).mp3"
   // "Another Artist - Another Song.mp3",
 ];
