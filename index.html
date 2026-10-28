@@ -3,28 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0a2160">
-<title>Song that reminds me of You</title>
+<meta name="theme-color" content="#e6e8f6">
+<title>Music Player</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="sky" aria-hidden="true"></div>
-
 <main class="app">
+
   <!-- PLAYER PAGE -->
   <section id="playerView" class="view active">
-    <h1 class="heading">
-      <span class="script big">Song</span>
-      <span class="serif">that reminds me</span>
-      <span class="serif small">of</span>
-      <span class="script big">You</span>
-    </h1>
+    <div class="topbar">
+      <button id="openList" class="soft" aria-label="Choose a song">
+        <svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg>
+      </button>
+      <button id="shuffle" class="soft" aria-label="Shuffle" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+      </button>
+    </div>
 
-    <div class="disc" id="disc" aria-hidden="true">
-      <div class="moon"></div>
+    <div class="stage" id="stage" aria-hidden="true">
+      <div class="record"></div>
+      <div class="arm"></div>
     </div>
 
     <div class="meta">
@@ -32,40 +34,41 @@
       <p id="artist">Add files to the music folder</p>
     </div>
 
-    <div class="seek">
+    <div class="wave">
+      <div class="bars" id="bars"></div>
       <input type="range" id="seek" min="0" max="100" step="0.1" value="0" aria-label="Seek">
-      <div class="times"><span id="cur">0:00</span><span id="dur">0:00</span></div>
     </div>
+    <div class="time"><b id="cur">0:00</b> / <span id="dur">0:00</span></div>
 
-    <div class="controls">
-      <button id="shuffle" class="ctl" aria-label="Shuffle" aria-pressed="false">
-        <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
-      </button>
-      <button id="prev" class="ctl" aria-label="Previous">
+    <div class="panel">
+      <button id="prev" class="soft lg" aria-label="Previous">
         <svg viewBox="0 0 24 24" class="fill"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg>
       </button>
-      <button id="play" class="ctl main" aria-label="Play">
-        <svg id="iconPlay" viewBox="0 0 24 24" class="fill"><path d="M8 5v14l11-7z"/></svg>
-        <svg id="iconPause" viewBox="0 0 24 24" class="fill" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      <button id="play" class="soft xl" aria-label="Play">
+        <svg viewBox="0 0 24 24" class="fill ico-play"><path d="M8 5v14l11-7z"/></svg>
+        <svg viewBox="0 0 24 24" class="fill ico-pause"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
       </button>
-      <button id="next" class="ctl" aria-label="Next">
+      <button id="next" class="soft lg" aria-label="Next">
         <svg viewBox="0 0 24 24" class="fill"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg>
-      </button>
-      <button id="openList" class="ctl" aria-label="Choose a song">
-        <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
       </button>
     </div>
   </section>
 
-  <!-- SONG LIST PAGE -->
+  <!-- EXPLORE (SONG LIST) PAGE -->
   <section id="listView" class="view">
-    <header class="listHead">
-      <button id="back" class="ctl" aria-label="Back to player">
-        <svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg>
-      </button>
-      <h2 class="script">Choose a song</h2>
-    </header>
+    <h2 class="listTitle">Explore</h2>
     <ul id="songList" class="songList"></ul>
+    <nav class="bottomNav">
+      <button class="nav on" aria-label="Songs" aria-current="page">
+        <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      </button>
+      <button id="navPlayer" class="nav" aria-label="Now playing">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+      <button id="navShuffle" class="nav" aria-label="Shuffle" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+      </button>
+    </nav>
   </section>
 </main>
 
